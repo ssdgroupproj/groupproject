@@ -1,0 +1,12 @@
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\bin\Debug\netcoreapp2.0\encrypt.deps.json
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\bin\Debug\netcoreapp2.0\encrypt.runtimeconfig.json
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\bin\Debug\netcoreapp2.0\encrypt.runtimeconfig.dev.json
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\bin\Debug\netcoreapp2.0\encrypt.dll
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\bin\Debug\netcoreapp2.0\encrypt.pdb
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\encrypt.csproj.CoreCompileInputs.cache
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\encrypt.AssemblyInfoInputs.cache
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\encrypt.AssemblyInfo.cs
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\encrypt.dll
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\encrypt.pdb
+C:\Users\Aaron\Source\Repos\groupproject\lab3b\encrypt\obj\Debug\netcoreapp2.0\encrypt.csprojAssemblyReference.cache

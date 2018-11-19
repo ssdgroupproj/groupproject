@@ -1,0 +1,29 @@
+﻿@model encrypt.Models.CreditCard
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CreditCard</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PTCC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PTCC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ECC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ECC)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
