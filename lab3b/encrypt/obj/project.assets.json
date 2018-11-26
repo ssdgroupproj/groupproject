@@ -13260,23 +13260,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Aaron\\.nuget\\packages\\": {},
+    "C:\\Users\\Azeem Virji\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Aaron\\Source\\Repos\\groupproject\\lab3b\\encrypt\\encrypt.csproj",
+      "projectUniqueName": "C:\\Users\\Azeem Virji\\Documents\\Secure Software Development\\groupproject\\lab3b\\encrypt\\encrypt.csproj",
       "projectName": "encrypt",
-      "projectPath": "C:\\Users\\Aaron\\Source\\Repos\\groupproject\\lab3b\\encrypt\\encrypt.csproj",
-      "packagesPath": "C:\\Users\\Aaron\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Aaron\\Source\\Repos\\groupproject\\lab3b\\encrypt\\obj\\",
+      "projectPath": "C:\\Users\\Azeem Virji\\Documents\\Secure Software Development\\groupproject\\lab3b\\encrypt\\encrypt.csproj",
+      "packagesPath": "C:\\Users\\Azeem Virji\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Azeem Virji\\Documents\\Secure Software Development\\groupproject\\lab3b\\encrypt\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Aaron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Azeem Virji\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

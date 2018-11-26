@@ -10,9 +10,11 @@ using encrypt.Models;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Authorization;
 
 namespace encrypt.Controllers
 {
+    [Authorize]
     public class CreditCardsController : Controller
     {
         private readonly ApplicationDbContext _context;

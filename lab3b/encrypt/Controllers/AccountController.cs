@@ -22,6 +22,7 @@ namespace encrypt.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
@@ -29,12 +30,14 @@ namespace encrypt.Controllers
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+            _roleManager = roleManager;
         }
 
         [TempData]
@@ -435,6 +438,46 @@ namespace encrypt.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        [AllowAnonymous]
+        public async Task<IActionResult> SeedRoles()
+        {
+            ApplicationUser user1 = new ApplicationUser
+            {
+                Email = "example@example.com",
+                UserName = "example@example.com"
+            };
+            ApplicationUser user2 = new ApplicationUser
+            {
+                Email = "admin@admin.com",
+                UserName = "admin@admin.com"
+            };
+            IdentityResult result = await _userManager.CreateAsync(user1, "P@ssword1");
+            if (!result.Succeeded)
+                return View("Error", new ErrorViewModel { RequestId = "Failed to add new user" });
+            result = await _userManager.CreateAsync(user2, "P@ssword1");
+            if (!result.Succeeded)
+                return View("Error", new ErrorViewModel { RequestId = "Failed to add new user" });
+
+            result = await _roleManager.CreateAsync(new IdentityRole("Member"));
+            if (!result.Succeeded)
+                return View("Error", new ErrorViewModel { RequestId = "Failed to add new role" });
+
+            result = await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            if (!result.Succeeded)
+                return View("Error", new ErrorViewModel { RequestId = "Failed to add new role" });
+
+
+            result = await _userManager.AddToRoleAsync(user1, "Member");
+            if (!result.Succeeded)
+                return View("Error", new ErrorViewModel { RequestId = "Failed to assign new role" });
+
+            result = await _userManager.AddToRoleAsync(user2, "Admin");
+            if (!result.Succeeded)
+                return View("Error", new ErrorViewModel { RequestId = "Failed to assign new role" });
+
+            return RedirectToAction(nameof(Login));
         }
 
         #region Helpers
