@@ -15,8 +15,11 @@ namespace encrypt.Models
 
         [NotMapped]
         [Required]
+        [CreditCard(ErrorMessage = "Invalid Credit Card Number")]
+        [Display(Name = "Plain-Text Credit Card Number")]
         public string PTCC { set; get; }
         //[Required]
+        [Display(Name = "Encrypted Credit Card Number")]
         public string ECC { set; get; }
         //[Required]
         public string SECC { set; get; }
