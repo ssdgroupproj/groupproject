@@ -53,7 +53,31 @@ namespace encrypt
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
+                        app.Use(async (context, next) =>
+            {
+                context.Response.OnStarting((state) =>
+                {
+                    context.Response.Headers["X-Frame-Options"] = "deny";
+                    context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+                    context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+                    context.Response.Headers["Cache-Control"] = "no-cache";
+                    
+                    return Task.CompletedTask;
+                }, context);
+
+                await next.Invoke();
+            });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                OnPrepareResponse = context =>
+                {
+                    context.Context.Response.Headers["X-Frame-Options"] = "deny";
+                    context.Context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+                    context.Context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
+                    context.Context.Response.Headers["Cache-Control"] = "no-cache";
+                }
+            });
 
             app.UseAuthentication();
 
