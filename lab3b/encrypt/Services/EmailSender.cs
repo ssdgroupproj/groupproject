@@ -43,7 +43,8 @@ namespace encrypt.Services
             mailMessage.To.Add(email);
             mailMessage.Subject = subject;
             mailMessage.Body = message;
-            
+            mailMessage.IsBodyHtml = true;
+
             client.Send(mailMessage);
 
             return Task.CompletedTask;

@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using encrypt.Models;
 using encrypt.Models.AccountViewModels;
 using encrypt.Services;
+using System.Text.Encodings.Web;
 
 namespace encrypt.Controllers
 {
@@ -231,6 +232,8 @@ namespace encrypt.Controllers
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
+
+                    await _userManager.AddToRoleAsync(user, "Member");
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
 
                     //await _signInManager.SignInAsync(user, isPersistent: false);
@@ -345,7 +348,14 @@ namespace encrypt.Controllers
             {
                 throw new ApplicationException($"Unable to load user with ID '{userId}'.");
             }
+
             var result = await _userManager.ConfirmEmailAsync(user, code);
+            if (!result.Succeeded)
+            {
+                throw new InvalidOperationException($"Error confirming email for user with ID '{userId}':");
+            }
+
+            await _signInManager.SignInAsync(user, isPersistent: false);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
