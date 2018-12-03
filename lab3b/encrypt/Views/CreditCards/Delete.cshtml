@@ -12,17 +12,23 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.PTCC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PTCC)
+        </dd>
+        @*<dt>
             @Html.DisplayNameFor(model => model.ECC)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.ECC)
-        </dd>
-        <dt>
+        </dd>*@
+        @*<dt>
             @Html.DisplayNameFor(model => model.SECC)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.SECC)
-        </dd>
+        </dd>*@
     </dl>
     
     <form asp-action="Delete">

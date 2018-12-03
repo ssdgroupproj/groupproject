@@ -18,11 +18,17 @@ namespace encrypt.Models
         [CreditCard(ErrorMessage = "Invalid Credit Card Number")]
         [Display(Name = "Plain-Text Credit Card Number")]
         public string PTCC { set; get; }
-        //[Required]
         [Display(Name = "Encrypted Credit Card Number")]
         public string ECC { set; get; }
-        //[Required]
         public string SECC { set; get; }
+
+        [NotMapped]
+        [Required]
+        [RegularExpression(@"^(\d{3})$", ErrorMessage = "Enter a valid 3 digit CVC")]
+        [Display(Name = "Plain-Text CVC")]
+        public string PTCVC { set; get; }
+        [Display(Name = "Encrypted CVC")]
+        public string ECVC { set; get; }
 
         public CreditCard()
         {

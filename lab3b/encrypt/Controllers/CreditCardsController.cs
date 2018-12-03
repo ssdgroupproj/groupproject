@@ -53,6 +53,7 @@ namespace encrypt.Controllers
                 if (creditCard.SECC == hmacKey)
                 {
                     creditCard.PTCC = Decrypt(creditCard.ECC);
+                    creditCard.PTCVC = Decrypt(creditCard.ECVC);
 
                     return View(creditCard);
                 }
@@ -94,6 +95,7 @@ namespace encrypt.Controllers
 
                 creditCard.Id = Guid.NewGuid();
                 creditCard.ECC = Encrypt(creditCard.PTCC);
+                creditCard.ECVC = Encrypt(creditCard.PTCVC);
                 creditCard.SECC = hmacKey;
 
                 _context.Add(creditCard);
@@ -214,11 +216,17 @@ namespace encrypt.Controllers
                 return NotFound();
             }
 
-            var creditCard = await _context.CreditCard
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var creditCard = await _context.CreditCard.SingleOrDefaultAsync(m => m.Id == id);
             if (creditCard == null)
             {
                 return NotFound();
+            }
+
+            string hmacKey = _configuration.GetSection("Keys").GetValue<string>("L3B-HMACSK");
+
+            if (creditCard.SECC == hmacKey)
+            {
+                creditCard.PTCC = Decrypt(creditCard.ECC);
             }
 
             return View(creditCard);

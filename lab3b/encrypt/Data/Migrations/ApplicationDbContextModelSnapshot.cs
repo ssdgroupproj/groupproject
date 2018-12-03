@@ -78,6 +78,8 @@ namespace encrypt.Data.Migrations
 
                     b.Property<string>("ECC");
 
+                    b.Property<string>("ECVC");
+
                     b.Property<string>("SECC");
 
                     b.HasKey("Id");

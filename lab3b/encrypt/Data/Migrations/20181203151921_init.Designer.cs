@@ -11,7 +11,7 @@ using System;
 namespace encrypt.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181119134344_init")]
+    [Migration("20181203151921_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,6 +78,8 @@ namespace encrypt.Data.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("ECC");
+
+                    b.Property<string>("ECVC");
 
                     b.Property<string>("SECC");
 

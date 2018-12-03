@@ -34,7 +34,9 @@ namespace encrypt
                 .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
+            //services.AddTransient<IEmailSender, EmailSender>();
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
 
             services.AddMvc();
         }
@@ -53,7 +55,7 @@ namespace encrypt
                 app.UseExceptionHandler("/Home/Error");
             }
 
-                        app.Use(async (context, next) =>
+            app.Use(async (context, next) =>
             {
                 context.Response.OnStarting((state) =>
                 {
@@ -61,7 +63,7 @@ namespace encrypt
                     context.Response.Headers["X-Content-Type-Options"] = "nosniff";
                     context.Response.Headers["X-XSS-Protection"] = "1; mode=block";
                     context.Response.Headers["Cache-Control"] = "no-cache";
-                    
+
                     return Task.CompletedTask;
                 }, context);
 

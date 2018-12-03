@@ -26,6 +26,7 @@ namespace encrypt.Data.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     ECC = table.Column<string>(nullable: true),
+                    ECVC = table.Column<string>(nullable: true),
                     SECC = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
