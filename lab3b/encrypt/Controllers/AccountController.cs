@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -460,8 +460,8 @@ namespace encrypt.Controllers
             };
             ApplicationUser user2 = new ApplicationUser
             {
-                Email = "admin@admin.com",
-                UserName = "admin@admin.com"
+                Email = "aaron.soulliere@mohawkcollege.ca",
+                UserName = "aaron.soulliere@mohawkcollege.ca"
             };
             IdentityResult result = await _userManager.CreateAsync(user1, "P@ssword1");
             if (!result.Succeeded)
@@ -483,9 +483,14 @@ namespace encrypt.Controllers
             if (!result.Succeeded)
                 return View("Error", new ErrorViewModel { RequestId = "Failed to assign new role" });
 
-            result = await _userManager.AddToRoleAsync(user2, "Admin");
-            if (!result.Succeeded)
-                return View("Error", new ErrorViewModel { RequestId = "Failed to assign new role" });
+            //result = await _userManager.AddToRoleAsync(user2, "Admin");
+            //if (!result.Succeeded)
+            //    return View("Error", new ErrorViewModel { RequestId = "Failed to assign new role" });
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user2);
+            var callbackUrl = Url.EmailConfirmationLink(user2.Id, code, Request.Scheme);
+
+            await _userManager.AddToRoleAsync(user2, "Admin");
+            await _emailSender.SendEmailConfirmationAsync(user2.Email, callbackUrl);
 
             return RedirectToAction(nameof(Login));
         }
